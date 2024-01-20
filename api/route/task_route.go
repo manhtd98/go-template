@@ -3,13 +3,14 @@ package route
 import (
 	"time"
 
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/api/controller"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/bootstrap"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/domain"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/mongo"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/repository"
-	"github.com/amitshekhariitbhu/go-backend-clean-architecture/usecase"
 	"github.com/gin-gonic/gin"
+
+	"backend-task/api/controller"
+	"backend-task/bootstrap"
+	"backend-task/domain"
+	"backend-task/mongo"
+	"backend-task/repository"
+	"backend-task/usecase"
 )
 
 func NewTaskRouter(env *bootstrap.Env, timeout time.Duration, db mongo.Database, group *gin.RouterGroup) {
@@ -19,4 +20,5 @@ func NewTaskRouter(env *bootstrap.Env, timeout time.Duration, db mongo.Database,
 	}
 	group.GET("/task", tc.Fetch)
 	group.POST("/task", tc.Create)
+	group.GET("/update", tc.Update)
 }

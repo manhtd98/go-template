@@ -1,6 +1,6 @@
 package bootstrap
 
-import "github.com/amitshekhariitbhu/go-backend-clean-architecture/mongo"
+import "backend-task/mongo"
 
 type Application struct {
 	Env   *Env

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"backend-task/domain"
-	"backend-task/internal/tokenutil"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/internal/tokenutil"
 )
 
 type refreshTokenUsecase struct {

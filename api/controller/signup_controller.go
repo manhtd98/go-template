@@ -3,8 +3,8 @@ package controller
 import (
 	"net/http"
 
-	"backend-task/bootstrap"
-	"backend-task/domain"
+	"github.com/project/go-microservices/bootstrap"
+	"github.com/project/go-microservices/domain"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"

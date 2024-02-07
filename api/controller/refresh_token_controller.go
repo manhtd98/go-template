@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"backend-task/bootstrap"
-	"backend-task/domain"
+	"github.com/project/go-microservices/bootstrap"
+	"github.com/project/go-microservices/domain"
 )
 
 type RefreshTokenController struct {

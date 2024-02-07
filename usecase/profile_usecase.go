@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"backend-task/domain"
+	"github.com/project/go-microservices/domain"
 )
 
 type profileUsecase struct {

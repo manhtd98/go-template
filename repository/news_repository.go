@@ -7,8 +7,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"backend-task/domain"
-	"backend-task/mongo"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/mongo"
 )
 
 type newsRepository struct {

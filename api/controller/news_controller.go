@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"backend-task/domain"
+	"github.com/project/go-microservices/domain"
 )
 
 type NewController struct {

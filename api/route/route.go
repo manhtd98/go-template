@@ -5,9 +5,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"backend-task/api/middleware"
-	"backend-task/bootstrap"
-	"backend-task/mongo"
+	"github.com/project/go-microservices/api/middleware"
+	"github.com/project/go-microservices/bootstrap"
+	"github.com/project/go-microservices/mongo"
 )
 
 func Setup(env *bootstrap.Env, timeout time.Duration, db mongo.Database, gin *gin.Engine) {

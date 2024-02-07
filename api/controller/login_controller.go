@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 
-	"backend-task/bootstrap"
-	"backend-task/domain"
+	"github.com/project/go-microservices/bootstrap"
+	"github.com/project/go-microservices/domain"
 )
 
 type LoginController struct {

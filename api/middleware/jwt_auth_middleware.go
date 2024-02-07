@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"strings"
 
-	"backend-task/domain"
-	"backend-task/internal/tokenutil"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/internal/tokenutil"
 )
 
 func JwtAuthMiddleware(secret string) gin.HandlerFunc {

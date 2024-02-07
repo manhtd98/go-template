@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"backend-task/domain"
+	"github.com/project/go-microservices/domain"
 
 	"github.com/gin-gonic/gin"
 )

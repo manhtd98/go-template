@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"backend-task/domain"
-	"backend-task/domain/mocks"
-	"backend-task/usecase"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/domain/mocks"
+	"github.com/project/go-microservices/usecase"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

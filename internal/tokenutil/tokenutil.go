@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"backend-task/domain"
+	"github.com/project/go-microservices/domain"
 
 	jwt "github.com/golang-jwt/jwt/v4"
 )

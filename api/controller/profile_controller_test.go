@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"backend-task/api/controller"
-	"backend-task/domain"
-	"backend-task/domain/mocks"
+	"github.com/project/go-microservices/api/controller"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/domain/mocks"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"

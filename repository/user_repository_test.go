@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"backend-task/domain"
-	"backend-task/mongo/mocks"
-	"backend-task/repository"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/mongo/mocks"
+	"github.com/project/go-microservices/repository"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

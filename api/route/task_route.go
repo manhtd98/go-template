@@ -5,12 +5,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"backend-task/api/controller"
-	"backend-task/bootstrap"
-	"backend-task/domain"
-	"backend-task/mongo"
-	"backend-task/repository"
-	"backend-task/usecase"
+	"github.com/project/go-microservices/api/controller"
+	"github.com/project/go-microservices/bootstrap"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/mongo"
+	"github.com/project/go-microservices/repository"
+	"github.com/project/go-microservices/usecase"
 )
 
 func NewTaskRouter(env *bootstrap.Env, timeout time.Duration, db mongo.Database, group *gin.RouterGroup) {

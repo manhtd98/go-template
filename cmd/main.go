@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	route "backend-task/api/route"
-	"backend-task/bootstrap"
+	route "github.com/project/go-microservices/api/route"
+	"github.com/project/go-microservices/bootstrap"
 
 	"github.com/gin-gonic/gin"
 )

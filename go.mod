@@ -1,4 +1,4 @@
-module backend-task
+module github.com/project/go-microservices
 
 go 1.19
 

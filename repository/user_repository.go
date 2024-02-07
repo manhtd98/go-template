@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 
-	"backend-task/domain"
-	"backend-task/mongo"
+	"github.com/project/go-microservices/domain"
+	"github.com/project/go-microservices/mongo"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

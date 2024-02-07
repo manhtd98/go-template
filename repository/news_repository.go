@@ -8,15 +8,15 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"github.com/project/go-microservices/domain"
-	"github.com/project/go-microservices/mongo"
+	"github.com/project/go-microservices/db"
 )
 
 type newsRepository struct {
-	database   mongo.Database
+	database   db.Database
 	collection string
 }
 
-func NewNewsRepository(db mongo.Database, collection string) domain.NewsRepository {
+func NewNewsRepository(db db.Database, collection string) domain.NewsRepository {
 	return &newsRepository{
 		database:   db,
 		collection: collection,

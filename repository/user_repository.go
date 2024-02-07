@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/project/go-microservices/domain"
-	"github.com/project/go-microservices/mongo"
+	"github.com/project/go-microservices/db"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -12,11 +12,11 @@ import (
 )
 
 type userRepository struct {
-	database   mongo.Database
+	database   db.Database
 	collection string
 }
 
-func NewUserRepository(db mongo.Database, collection string) domain.UserRepository {
+func NewUserRepository(db db.Database, collection string) domain.UserRepository {
 	return &userRepository{
 		database:   db,
 		collection: collection,

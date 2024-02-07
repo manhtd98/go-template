@@ -6,10 +6,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/project/go-microservices/mongo"
+	"github.com/project/go-microservices/db"
 )
 
-func NewMongoDatabase(env *Env) mongo.Client {
+func NewMongoDatabase(env *Env) db.Client {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
@@ -24,7 +24,7 @@ func NewMongoDatabase(env *Env) mongo.Client {
 		mongodbURI = fmt.Sprintf("mongodb://%s:%s", dbHost, dbPort)
 	}
 
-	client, err := mongo.NewClient(mongodbURI)
+	client, err := db.NewClient(mongodbURI)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,7 +42,7 @@ func NewMongoDatabase(env *Env) mongo.Client {
 	return client
 }
 
-func CloseMongoDBConnection(client mongo.Client) {
+func CloseMongoDBConnection(client db.Client) {
 	if client == nil {
 		return
 	}

@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	mongo "github.com/project/go-microservices/mongo"
+	mongo "github.com/project/go-microservices/db"
 	mock "github.com/stretchr/testify/mock"
 )
 

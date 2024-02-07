@@ -1,10 +1,10 @@
 package bootstrap
 
-import "github.com/project/go-microservices/mongo"
+import "github.com/project/go-microservices/db"
 
 type Application struct {
 	Env   *Env
-	Mongo mongo.Client
+	Mongo db.Client
 }
 
 func App() Application {

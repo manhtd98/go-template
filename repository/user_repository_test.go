@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/project/go-microservices/domain"
-	"github.com/project/go-microservices/mongo/mocks"
+	"github.com/project/go-microservices/db/mocks"
 	"github.com/project/go-microservices/repository"
 
 	"github.com/stretchr/testify/assert"

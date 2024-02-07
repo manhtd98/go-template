@@ -4,18 +4,18 @@ import (
 	"context"
 
 	"github.com/project/go-microservices/domain"
-	"github.com/project/go-microservices/mongo"
+	"github.com/project/go-microservices/db"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type taskRepository struct {
-	database   mongo.Database
+	database   db.Database
 	collection string
 }
 
-func NewTaskRepository(db mongo.Database, collection string) domain.TaskRepository {
+func NewTaskRepository(db db.Database, collection string) domain.TaskRepository {
 	return &taskRepository{
 		database:   db,
 		collection: collection,

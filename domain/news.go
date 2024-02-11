@@ -9,10 +9,10 @@ import (
 
 type News struct {
 	gorm.Model
-	UserID  string
-	CreatedAt time.Time
-	Title string
-	Content string
+	UserID  string `bson:"user_id"`
+	CreatedAt time.Time `bson:"created_at"`
+	Title string `bson:"title"`
+	Content string `bson:"content"`
 }
 
 type NewsRepository interface {

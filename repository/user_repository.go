@@ -42,6 +42,9 @@ func (ur *userRepository) GetByEmail(c context.Context, email string) (domain.Us
 
 func (ur *userRepository) GetByID(c context.Context, id string) (domain.User, error) {
 	var user domain.User
-	ur.database.First(&user, "id = ?", id)
-	return user, nil
+	err := ur.database.First(&user, "id = ?", id).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return user, nil
+	  }
+	return user, err
 }

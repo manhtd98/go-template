@@ -18,4 +18,6 @@ func NewsRouter(env *bootstrap.Env, timeout time.Duration, db *gorm.DB, group *g
 		NewsUsecase: usecase.NewNewsUsecase(tr, timeout),
 	}
 	group.POST("/news", tc.Create)
+	group.GET("/news", tc.GetByID)
+	group.DELETE("/news", tc.DeleteByUserID)
 }

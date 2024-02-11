@@ -1,11 +1,12 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 
-	"github.com/project/go-microservices/domain"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/project/go-microservices/domain"
 )
 
 type ProfileController struct {
@@ -14,7 +15,7 @@ type ProfileController struct {
 
 func (pc *ProfileController) Fetch(c *gin.Context) {
 	userID := c.GetString("x-user-id")
-
+	fmt.Println(userID)
 	profile, err := pc.ProfileUsecase.GetProfileByID(c, userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})

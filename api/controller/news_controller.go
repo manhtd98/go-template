@@ -24,10 +24,11 @@ func (tc *NewController) Create(c *gin.Context) {
 	userID := c.GetString("x-user-id")
 
 	news.UserID = userID
-	if err != nil {
-		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
-		return
-	}
+	
+	// if err != nil {
+	// 	c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
+	// 	return
+	// }
 
 	err = tc.NewsUsecase.Create(c, &news)
 	if err != nil {
@@ -38,4 +39,25 @@ func (tc *NewController) Create(c *gin.Context) {
 	c.JSON(http.StatusOK, domain.SuccessResponse{
 		Message: "Task created successfully",
 	})
+}
+func (tc *NewController) GetByID(c *gin.Context) {
+	userID := c.GetString("x-user-id")
+	news, err := tc.NewsUsecase.FetchByUserID(c, userID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, news)
+}
+
+func (tc *NewController) DeleteByUserID(c *gin.Context) {
+	userID := c.GetString("x-user-id")
+	news, err := tc.NewsUsecase.DeleteByUserID(c, userID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, news)
 }

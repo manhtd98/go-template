@@ -3,12 +3,11 @@ package controller
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
+
 	"github.com/project/go-microservices/bootstrap"
 	"github.com/project/go-microservices/domain"
-
-	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"golang.org/x/crypto/bcrypt"
 )
 
 type SignupController struct {
@@ -26,7 +25,8 @@ func (sc *SignupController) Signup(c *gin.Context) {
 	}
 
 	_, err = sc.SignupUsecase.GetUserByEmail(c, request.Email)
-	if err == nil {
+
+	if err != nil {
 		c.JSON(http.StatusConflict, domain.ErrorResponse{Message: "User already exists with the given email"})
 		return
 	}
@@ -43,7 +43,6 @@ func (sc *SignupController) Signup(c *gin.Context) {
 	request.Password = string(encryptedPassword)
 
 	user := domain.User{
-		ID:       primitive.NewObjectID(),
 		Name:     request.Name,
 		Email:    request.Email,
 		Password: request.Password,

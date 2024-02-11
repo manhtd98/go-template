@@ -2,19 +2,17 @@ package domain
 
 import (
 	"context"
+	"time"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
-)
-
-const (
-	CollectionNew = "news"
+	"gorm.io/gorm"
 )
 
 type News struct {
-	ID     primitive.ObjectID `bson:"_id" json:"-"`
-	Title  string             `bson:"title" form:"title" binding:"required" json:"title"`
-	UserID primitive.ObjectID `bson:"userID" json:"-"`
-	CreatedAt primitive.DateTime `bson:"createdAt" json:"-"`
+	gorm.Model
+	UserID  string
+	CreatedAt time.Time
+	Title string
+	Content string
 }
 
 type NewsRepository interface {

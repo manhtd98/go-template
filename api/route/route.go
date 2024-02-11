@@ -4,13 +4,13 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 
 	"github.com/project/go-microservices/api/middleware"
 	"github.com/project/go-microservices/bootstrap"
-	"github.com/project/go-microservices/db"
 )
 
-func Setup(env *bootstrap.Env, timeout time.Duration, db db.Database, gin *gin.Engine) {
+func Setup(env *bootstrap.Env, timeout time.Duration, db *gorm.DB, gin *gin.Engine) {
 	publicRouter := gin.Group("")
 	publicRouter.Use(middleware.CORSMiddleware())
 	// All Public APIs
@@ -25,5 +25,4 @@ func Setup(env *bootstrap.Env, timeout time.Duration, db db.Database, gin *gin.E
 	// All Private APIs
 	NewProfileRouter(env, timeout, db, protectedRouter)
 	NewsRouter(env, timeout, db, protectedRouter)
-	NewTaskRouter(env, timeout, db, protectedRouter)
 }

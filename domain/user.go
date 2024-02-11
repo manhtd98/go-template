@@ -3,7 +3,7 @@ package domain
 import (
 	"context"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"gorm.io/gorm"
 )
 
 const (
@@ -11,7 +11,8 @@ const (
 )
 
 type User struct {
-	ID       primitive.ObjectID `bson:"_id"`
+	gorm.Model
+	ID   string
 	Name     string             `bson:"name"`
 	Email    string             `bson:"email"`
 	Password string             `bson:"password"`

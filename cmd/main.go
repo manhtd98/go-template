@@ -3,10 +3,11 @@ package main
 import (
 	"time"
 
+	"github.com/gin-gonic/gin"
+
 	route "github.com/project/go-microservices/api/route"
 	"github.com/project/go-microservices/bootstrap"
-
-	"github.com/gin-gonic/gin"
+	"github.com/project/go-microservices/db"
 )
 
 func main() {
@@ -15,14 +16,13 @@ func main() {
 
 	env := app.Env
 
-	db := app.Mongo.Database(env.DBName)
-	defer app.CloseDBConnection()
+	// defer db.PGDataBase.Close()
 
 	timeout := time.Duration(env.ContextTimeout) * time.Second
 
 	gin := gin.Default()
 
-	route.Setup(env, timeout, db, gin)
+	route.Setup(env, timeout, db.PGDataBase, gin)
 
 	gin.Run(env.ServerAddress)
 }

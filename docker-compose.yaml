@@ -14,18 +14,30 @@ services:
   #   depends_on:
   #     - mongodb
 
-  mongodb:
-    image: mongo:6.0
-    container_name: mongodb
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$DB_USER
-      - MONGO_INITDB_ROOT_PASSWORD=$DB_PASS
+  # mongodb:
+  #   image: mongo:6.0
+  #   container_name: mongodb
+  #   restart: unless-stopped
+  #   env_file: .env
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=$DB_USER
+  #     - MONGO_INITDB_ROOT_PASSWORD=$DB_PASS
+  #   ports:
+  #     - "$DB_PORT:$DB_PORT"
+  #   volumes:
+  #     - dbdata:/data/db
+
+  db:
+    image: postgres:15.0
     ports:
-      - "$DB_PORT:$DB_PORT"
+      - 5432:5432
+    restart: unless-stopped
     volumes:
-      - dbdata:/data/db
+      - pg-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgadmin
 
 volumes:
   dbdata:
+  pg-db:

@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"github.com/project/go-microservices/domain"
 )
@@ -23,9 +22,8 @@ func (tc *NewController) Create(c *gin.Context) {
 	}
 
 	userID := c.GetString("x-user-id")
-	news.ID = primitive.NewObjectID()
 
-	news.UserID, err = primitive.ObjectIDFromHex(userID)
+	news.UserID = userID
 	if err != nil {
 		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
 		return
@@ -40,28 +38,4 @@ func (tc *NewController) Create(c *gin.Context) {
 	c.JSON(http.StatusOK, domain.SuccessResponse{
 		Message: "Task created successfully",
 	})
-}
-
-func (u *NewController) Fetch(c *gin.Context) {
-	userID := c.GetString("x-user-id")
-
-	news, err := u.NewsUsecase.FetchByUserID(c, userID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, news)
-}
-
-func (u *NewController) Delete(c *gin.Context) {
-	userID := c.GetString("x-user-id")
-
-	news, err := u.NewsUsecase.DeleteByUserID(c, userID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, news)
 }

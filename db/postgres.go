@@ -17,12 +17,12 @@ type Config struct {
 	DBPort         string `mapstructure:"POSTGRES_PORT"`
 }
 
-var DB *gorm.DB
+var PGDataBase *gorm.DB
 func ConnectDB(config *Config) {
 	var err error
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai", config.DBHost, config.DBUserName, config.DBUserPassword, config.DBName, config.DBPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", config.DBHost, config.DBUserName, config.DBUserPassword, config.DBName, config.DBPort)
 
-	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	PGDataBase, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to the Database")
 	}

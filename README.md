@@ -240,7 +240,7 @@ Whenever you make changes in the interfaces of these use-cases, repositories, or
 
   ```
   curl --location --request GET 'http://localhost:8080/profile' \
-  --header 'Authorization: Bearer access_token'
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCBOYW1lIiwiaWQiOiIiLCJleHAiOjE3MDc2OTU3Mzl9.d0zrkBD54FWGT4-KnGw3rM5OB1fMDoUfZgOIvtxuyJA'
   ```
 
   - Response

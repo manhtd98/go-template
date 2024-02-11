@@ -1,19 +1,21 @@
 package bootstrap
 
-import "github.com/project/go-microservices/db"
+import (
+	"gorm.io/gorm"
+
+	"github.com/project/go-microservices/db"
+)
 
 type Application struct {
-	Env   *Env
-	Mongo db.Client
+	Env *Env
+	// Mongo db.Client
+	Postgres *gorm.DB
 }
 
 func App() Application {
 	app := &Application{}
 	app.Env = NewEnv()
-	app.Mongo = NewMongoDatabase(app.Env)
+	NewPGDatabase(app.Env)
+	app.Postgres = db.PGDataBase
 	return *app
-}
-
-func (app *Application) CloseDBConnection() {
-	CloseMongoDBConnection(app.Mongo)
 }

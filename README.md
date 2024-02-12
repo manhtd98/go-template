@@ -221,7 +221,7 @@ Whenever you make changes in the interfaces of these use-cases, repositories, or
 
   ```
   curl --location --request POST 'http://localhost:8080/login' \
-  --data-urlencode 'email=test@gmail.com' \
+  --data-urlencode 'email=test2@gmail.com' \
   --data-urlencode 'password=test'
   ```
 
@@ -276,8 +276,8 @@ Whenever you make changes in the interfaces of these use-cases, repositories, or
   - Request
 
   ```
-  curl --location --request GET 'http://localhost:8080/update' \
-  --header 'Authorization: Bearer access_token'
+  curl --location --request GET 'http://localhost:8080/profile' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGVzdCBOYW1lIiwiaWQiOiI0IiwiZXhwIjoxNzA3Nzc2OTk3fQ.OfXnn-f7MKyjtIpY43VoKsam2Xh9H6YhF1Kt72HsBn0'
   ```
 
   - Response
@@ -300,7 +300,7 @@ Whenever you make changes in the interfaces of these use-cases, repositories, or
   ```
   curl --location --request POST 'http://localhost:8080/refresh' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data-urlencode 'refreshToken=refresh_token'
+  --data-urlencode 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJleHAiOjE3MDgzNzQ1OTd9.RWiu2iY3FHykCUTdbvogSlJE9WIwNRuf6xeNDSuwCI'
   ```
 
   - Response

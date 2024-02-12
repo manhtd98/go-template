@@ -29,7 +29,6 @@ func (lc *LoginController) Login(c *gin.Context) {
 		c.JSON(http.StatusNotFound, domain.ErrorResponse{Message: "User not found with the given email"})
 		return
 	}
-
 	if bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(request.Password)) != nil {
 		c.JSON(http.StatusUnauthorized, domain.ErrorResponse{Message: "Invalid credentials"})
 		return

@@ -21,8 +21,8 @@ func NewUserRepository(db *gorm.DB) *userRepository {
 }
 
 func (ur *userRepository) Create(c context.Context, user *domain.User) error {
-	ur.database.Create(user)
-	return nil
+	err := ur.database.Create(user).Error
+	return err
 }
 func (ur *userRepository) Fetch(c context.Context) ([]domain.User, error) {
 	var user []domain.User
@@ -34,10 +34,10 @@ func (ur *userRepository) GetByEmail(c context.Context, email string) (domain.Us
 	var user domain.User
 	err := ur.database.First(&user, "email = ?", email).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return user, nil
+		return user, err
 	  }
 	  
-	return user, err
+	return user, nil
 }
 
 func (ur *userRepository) GetByID(c context.Context, id string) (domain.User, error) {

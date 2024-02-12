@@ -14,22 +14,13 @@ type NewController struct {
 
 func (tc *NewController) Create(c *gin.Context) {
 	var news domain.News
-
 	err := c.ShouldBind(&news)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
 		return
 	}
-
 	userID := c.GetString("x-user-id")
-
 	news.UserID = userID
-	
-	// if err != nil {
-	// 	c.JSON(http.StatusBadRequest, domain.ErrorResponse{Message: err.Error()})
-	// 	return
-	// }
-
 	err = tc.NewsUsecase.Create(c, &news)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, domain.ErrorResponse{Message: err.Error()})

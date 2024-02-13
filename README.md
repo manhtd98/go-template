@@ -1,11 +1,6 @@
 # Go Backend Clean Architecture
 
-A Go (Golang) Backend Clean Architecture project with Gin, MongoDB, JWT Authentication Middleware, Test, and Docker.
-
-![Go Backend Clean Architecture](https://github.com/manhtd98/go-template/blob/main/assets/go-backend-clean-architecture.png?raw=true)
-
-
-## Architecture Layers of the project
+A Go (Golang) Backend Clean Architecture project with Gin, POSTGRES, MONGO, JWT Authentication Middleware, Test, and Docker.
 
 - Router
 - Controller
@@ -50,7 +45,7 @@ cd your-workspace
 git clone https://github.com/project/go-microservices.git
 
 # Move to the project root directory
-cd go-backend-clean-architecture
+cd go-microservices
 ```
 
 #### Run without Docker

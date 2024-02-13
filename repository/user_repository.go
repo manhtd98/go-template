@@ -35,8 +35,8 @@ func (ur *userRepository) GetByEmail(c context.Context, email string) (domain.Us
 	err := ur.database.First(&user, "email = ?", email).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
 		return user, err
-	  }
-	  
+	}
+
 	return user, nil
 }
 
@@ -45,6 +45,6 @@ func (ur *userRepository) GetByID(c context.Context, id string) (domain.User, er
 	err := ur.database.First(&user, "id = ?", id).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
 		return user, nil
-	  }
+	}
 	return user, err
 }

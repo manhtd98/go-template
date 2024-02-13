@@ -19,7 +19,7 @@ type Env struct {
 	RefreshTokenExpiryHour int    `mapstructure:"REFRESH_TOKEN_EXPIRY_HOUR"`
 	AccessTokenSecret      string `mapstructure:"ACCESS_TOKEN_SECRET"`
 	RefreshTokenSecret     string `mapstructure:"REFRESH_TOKEN_SECRET"`
-	LoggingLevel     string `mapstructure:"LOGGING_LEVEL"`
+	LoggingLevel           string `mapstructure:"LOGGING_LEVEL"`
 }
 
 func NewEnv() *Env {

@@ -6,17 +6,13 @@ import (
 	"gorm.io/gorm"
 )
 
-const (
-	CollectionUser = "users"
-)
-
 type User struct {
 	gorm.Model
-	ID   int32           `json:"id" gorm:"primaryKey;autoIncrement:true"`
-	Name     string             `json:"name"`
-	UserName string			 `json:"username" gorm:"index:id_username"`
-	Email    string             `json:"email" gorm:"index:idx_name;unique;not null;type:varchar(100);default:null"`
-	Password string             `json:"password"`
+	ID       int32  `json:"id" gorm:"primaryKey;autoIncrement:true"`
+	Name     string `json:"name"`
+	UserName string `json:"username" gorm:"index:id_username"`
+	Email    string `json:"email" gorm:"index:idx_name;unique;not null;type:varchar(100);default:null"`
+	Password string `json:"password"`
 }
 
 type UserRepository interface {

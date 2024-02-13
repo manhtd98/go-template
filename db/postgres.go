@@ -6,25 +6,23 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"github.com/project/go-microservices/domain"
 )
 
-
-type Config struct {
-	DBHost         string `mapstructure:"POSTGRES_HOST"`
-	DBUserName     string `mapstructure:"POSTGRES_USER"`
-	DBUserPassword string `mapstructure:"POSTGRES_PASSWORD"`
-	DBName         string `mapstructure:"POSTGRES_DB"`
-	DBPort         string `mapstructure:"POSTGRES_PORT"`
-}
 type PGDatabase struct {
 	DBConnect *gorm.DB
+	config    domain.DBConfig
 }
-func NewPGDatabase() PGDatabase {
-	return PGDatabase{}
+
+func NewPGDatabase(cfg domain.DBConfig) *PGDatabase {
+	return &PGDatabase{config: cfg}
 }
-func (ur *PGDatabase) ConnectDB(config Config) {
+func (ur *PGDatabase) ConnectDB() {
 	var err error
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", config.DBHost, config.DBUserName, config.DBUserPassword, config.DBName, config.DBPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", ur.config.DBHost,
+		ur.config.DBUserName, ur.config.DBUserPassword,
+		ur.config.DBName, ur.config.DBPort)
 
 	ur.DBConnect, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {

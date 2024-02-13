@@ -8,7 +8,6 @@ import (
 
 	route "github.com/project/go-microservices/api/route"
 	"github.com/project/go-microservices/bootstrap"
-	"github.com/project/go-microservices/db"
 )
 
 func LoggingInit(logEnv string) {
@@ -35,7 +34,7 @@ func main() {
 
 	gin := gin.Default()
 
-	route.Setup(env, timeout, db.PGDataBase, gin)
+	route.Setup(env, timeout, app.Postgres, gin)
 
 	gin.Run(env.ServerAddress)
 }

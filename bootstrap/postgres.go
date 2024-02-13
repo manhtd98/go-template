@@ -7,7 +7,7 @@ import (
 	"github.com/project/go-microservices/db"
 )
 
-func NewPGDatabase(env *Env) {
+func NewPGDatabase(pgDB *db.PGDatabase, env *Env) {
 	_, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
@@ -18,5 +18,6 @@ func NewPGDatabase(env *Env) {
 		DBUserPassword: env.DBPass,
 		DBPort: env.DBPort,
 	}
-	db.ConnectDB(&dbConfig)
+
+	pgDB.ConnectDB(dbConfig)
 }

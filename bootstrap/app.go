@@ -8,14 +8,14 @@ import (
 
 type Application struct {
 	Env *Env
-	// Mongo db.Client
 	Postgres *gorm.DB
 }
 
 func App() Application {
 	app := &Application{}
 	app.Env = NewEnv()
-	NewPGDatabase(app.Env)
-	app.Postgres = db.PGDataBase
+	newPGDB := db.NewPGDatabase()
+	NewPGDatabase(&newPGDB, app.Env)
+	app.Postgres = newPGDB.DBConnect
 	return *app
 }
